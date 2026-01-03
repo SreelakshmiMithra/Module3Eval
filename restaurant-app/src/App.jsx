@@ -1,9 +1,9 @@
-import { BrowserRouter,Routes } from 'react-router-dom';
+import { Routes,Route } from 'react-router-dom';
 import Login  from "./pages/Login";
 import AdminDashboard from "./pages/admin/AdminDashboard"
 import CustomerDashboard from "./pages/customer/CustomerDashboard";
 import UpdateRestaurant from "./pages/admin/UpdateRestaurant";
-import AuthProvider from "./auth/AuthContext";
+import {AuthProvider} from "./auth/AuthContext";
 import ProtectedRoute from './auth/ProtectedRoute'; 
 
 
@@ -11,7 +11,7 @@ import ProtectedRoute from './auth/ProtectedRoute';
 function App() {
    return(
     <AuthProvider>
-    <BrowserRouter>
+
     <Routes>
       <Route path='/' element={<Login/>}/>
       <Route path='/admin/dashboard' element={
@@ -24,14 +24,17 @@ function App() {
           <UpdateRestaurant/>
         </ProtectedRoute>
       }/>
+      {/* Customer Routes */}
       <Route path='/customer/dashboard' element={
         <ProtectedRoute role="customer">
           <CustomerDashboard/>
         </ProtectedRoute>
       }/>
     </Routes>
-    </BrowserRouter>
+
     </AuthProvider>
    );
 }
 export default App;
+
+
