@@ -1,4 +1,6 @@
 import {useEffect,useState} from "react";
+import Navbar from "../../components/Navbar";
+
 import {getRestaurants} from "../../services/restaurantServices";
 import RestaurantCard from "../../components/RestaurantCard";
 
